@@ -230,18 +230,14 @@ class Operator_Pesquisa_Medidos(bpy.types.Operator):
     bl_idname = "cd.operator_pesquisa_medidos"
     bl_label = "Pesquisa itens medidos"
 
-    def execute(self, context):
-        
-        props = context.scene.my_props
-        pesq_medidos(props)
-
-#        try:
-#            props = context.scene.my_props
-#            pesq_medidos(props)
-#            self.report({"INFO"}, "Pesquisa executada com Sucesso")
-#            
-#        except:
-#            self.report({"ERROR"}, "Alguma coisa saiu errada, confira as propriedades") 
+    def execute(self, context):  
+       try:
+           props = context.scene.my_props
+           pesq_medidos(props)
+           self.report({"INFO"}, "Pesquisa executada com Sucesso")
+           
+       except:
+           self.report({"ERROR"}, "Alguma coisa saiu errada, confira as propriedades") 
 
         return {"FINISHED"}
 
@@ -252,18 +248,13 @@ class Operator_Pesquisa_Nao_Medidos(bpy.types.Operator):
     bl_label = "Pesquisa itens não medidos"
 
     def execute(self, context):
-        props = context.scene.my_props
-        pesq_nao_medidos(props)
-
-
-
-#        try:
-#            props = context.scene.my_props
-#            pesq_nao_medidos(props)
-#            self.report({"INFO"}, "Pesquisa executada com Sucesso")
-#            
-#        except:
-#            self.report({"ERROR"}, "Alguma coisa saiu errada, confira as propriedades") 
+       try:
+           props = context.scene.my_props
+           pesq_nao_medidos(props)
+           self.report({"INFO"}, "Pesquisa executada com Sucesso")
+           
+       except:
+           self.report({"ERROR"}, "Alguma coisa saiu errada, confira as propriedades") 
 
         return {"FINISHED"}
 
@@ -285,7 +276,6 @@ def register():
         bpy.utils.register_class(klass)
     bpy.types.Scene.my_props = bpy.props.PointerProperty(type=MyProperties) 
     
-
 
 
 def unregister():
